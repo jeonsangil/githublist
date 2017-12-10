@@ -14,10 +14,9 @@ import SwiftyJSON
 
 final class ListTableViewCell: UITableViewCell {
     
-    let imageviewAvata:UIImageView  = UIImageView()
-    let labelName: UILabel = UILabel()
-    let viewLine: UIView = UIView()
-    
+    let imageviewAvata:UIImageView  = UIImageView() //유저이미지
+    let labelName: UILabel = UILabel() //이름라벨
+    let viewLine: UIView = UIView() //백그라운드 라인뷰
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,10 +36,25 @@ final class ListTableViewCell: UITableViewCell {
         self.viewLine.layer.borderWidth = 1.0
         self.viewLine.layer.borderColor = UIColor.black.cgColor
         //self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        self.viewLine.frame = self.frame
-        self.imageviewAvata.frame = CGRect(x: 10, y: 5, width: 40, height: 40)
-        self.labelName.frame = CGRect(x: 50, y: 5, width: 100, height: 40)
+        //오토레이아웃설정 백그라운드 라인뷰
+        self.viewLine.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(5)
+            make.bottom.equalTo(-5)
+            make.leading.equalTo(10)
+            make.trailing.equalTo(-10)
+        }
+        //오토레이아웃설정 유저이미지
+        self.imageviewAvata.snp.makeConstraints { (make) -> Void in
+            make.size.equalTo(CGSize(width: 40, height: 40))
+            make.centerY.equalTo(self.viewLine)
+            make.left.equalTo(self.viewLine).offset(10)
+        }
+        //오토레이아웃설정 유저이름
+        self.labelName.snp.makeConstraints { (make) -> Void in
+            make.centerY.equalTo(self.viewLine)
+            make.left.equalTo(self.imageviewAvata.snp.right).offset(10)
+            make.right.equalTo(self.viewLine).offset(-10)
+        }
     }
     //리스트 셀 Data 셋팅
     func setData(item : ApiList.Response){
