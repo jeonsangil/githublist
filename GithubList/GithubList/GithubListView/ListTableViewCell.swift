@@ -70,7 +70,7 @@ final class ListTableViewCell: UITableViewCell {
     //서치 검색없음표시
     func setEmptyDate(){
         self.imageviewAvata.image = nil
-        self.labelName.text = "empty"
+        self.labelName.text = "입력한 사용자를 찾을수 없습니다.😭" //검색데이타 없을시
         self.viewLine.layer.borderColor = UIColor.clear.cgColor
     }
 }
