@@ -16,7 +16,7 @@ final class GithublistViewController: UIViewController, UISearchBarDelegate, UIT
     //UI 변수 관련
     var tableview : UITableView!
     var searchBar: UISearchBar!
-    
+    var footerView : ListFooterView! //테이블뷰 푸터 인디게이터표시
     //통신 데이타 관련
     let apiList: ApiList = ApiList()
     //searbar 관련
@@ -30,7 +30,6 @@ final class GithublistViewController: UIViewController, UISearchBarDelegate, UIT
         // Do any additional setup after loading the view, typically from a nib.
         self.setting()
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,15 +79,21 @@ final class GithublistViewController: UIViewController, UISearchBarDelegate, UIT
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
         }
-        //레포지터리 데이타요청
+        //테이블뷰 푸터 셋팅
+        self.footerView = ListFooterView(frame: CGRect(x: 0, y: 0, width: self.tableview.frame.width, height: 50))
+        self.tableview.tableFooterView =  self.footerView
+        //레포지터리 겟 데이타요청
         self.apiRequest(listId: "since")
     }
 }
 //network
 extension GithublistViewController  {
+    //레포지터리 겟 데이타요청!
     func apiRequest(listId : String){
         self.apiList.ApiGet(param: listId) {
+            self.footerView.setStart() //인디게이터시작
             self.tableview.reloadData()
+            self.footerView.setStop() //인디게이터종료
         }
     }
 }
@@ -96,7 +101,13 @@ extension GithublistViewController  {
 extension GithublistViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if inSearchMode {
-            return searchData.count
+            if searchData.count > 0 {
+                //검색데이타가 1개 이상시 검색데이타 반영
+                return searchData.count
+            }else{
+                //검색데이타 없을시 1개 리턴
+                return 1
+            }
         }
         return self.apiList.response.count
     }
@@ -105,33 +116,39 @@ extension GithublistViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         
         //검색 데이타 삽입
-        if inSearchMode {
-            cell.setData(item: self.searchData[indexPath.row])
-        }else{ //Cell 데이타 삽입
+        if inSearchMode == true {
+            if searchData.count > 0 {
+                cell.setData(item: self.searchData[indexPath.row])
+            }else{
+                //검색데이타 없을시
+                cell.setEmptyDate()
+            }
+        }else{
+        //Cell 데이타 삽입
             cell.setData(item: self.apiList.response[indexPath.row])
         }
+        //더 불러오기
+        if self.apiList.response.count - 1 == indexPath.row {
+            self.loadMore(item: self.apiList.response[indexPath.row])
+        }
         return cell
+    }
+    //더 불러오기
+    func loadMore(item : ApiList.Response ) {
+        self.apiRequest(listId: "since=\(item.listId)")
     }
 }
 //saerchBar 구현
 extension GithublistViewController  {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         if searchBar.text == nil || searchBar.text == "" {
-            
             inSearchMode = false
-            
             view.endEditing(true)
-            
         } else {
-            
             inSearchMode = true
-            
             self.searchData = self.apiList.response.filter({  $0.name == searchBar.text})
         }
     }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

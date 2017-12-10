@@ -25,6 +25,11 @@ final class ListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setUI()
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imageviewAvata.image = nil
+        self.labelName.text = ""
+    }
     //리스트 셀 UI 셋팅
     func setUI(){
         
@@ -60,5 +65,12 @@ final class ListTableViewCell: UITableViewCell {
     func setData(item : ApiList.Response){
         self.imageviewAvata.kf.setImage(with: item.imageURL) //이미지설정
         self.labelName.text = item.name //이름설정
+        self.viewLine.layer.borderColor = UIColor.black.cgColor
+    }
+    //서치 검색없음표시
+    func setEmptyDate(){
+        self.imageviewAvata.image = nil
+        self.labelName.text = "empty"
+        self.viewLine.layer.borderColor = UIColor.clear.cgColor
     }
 }

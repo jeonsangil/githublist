@@ -15,6 +15,7 @@
 		951A34A91FDD5E2A00F05CBE /* GithublistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34A81FDD5E2A00F05CBE /* GithublistViewController.swift */; };
 		951A34AE1FDD62B700F05CBE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */; };
 		951A34B21FDD648000F05CBE /* ApiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34B11FDD648000F05CBE /* ApiList.swift */; };
+		951A34B41FDD6CF200F05CBE /* ListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34B31FDD6CF200F05CBE /* ListFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		951A34A81FDD5E2A00F05CBE /* GithublistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithublistViewController.swift; sourceTree = "<group>"; };
 		951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		951A34B11FDD648000F05CBE /* ApiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiList.swift; sourceTree = "<group>"; };
+		951A34B31FDD6CF200F05CBE /* ListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFooterView.swift; sourceTree = "<group>"; };
 		9B75D4E2C18E6459F6ACEB90 /* Pods-GithubList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubList/Pods-GithubList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */,
+				951A34B31FDD6CF200F05CBE /* ListFooterView.swift */,
 			);
 			path = GithubListView;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				951A34961FDD5C4000F05CBE /* AppDelegate.swift in Sources */,
 				951A34B21FDD648000F05CBE /* ApiList.swift in Sources */,
 				951A34AE1FDD62B700F05CBE /* ListTableViewCell.swift in Sources */,
+				951A34B41FDD6CF200F05CBE /* ListFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
