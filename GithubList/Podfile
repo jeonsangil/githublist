@@ -1,10 +1,16 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, ’10.0’
 
 target 'GithubList' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+   	
   # Pods for GithubList
-
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    pod 'Kingfisher'
+    pod 'SnapKit'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    
 end
