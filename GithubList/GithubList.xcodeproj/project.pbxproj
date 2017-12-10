@@ -13,6 +13,8 @@
 		951A349D1FDD5C4000F05CBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951A349C1FDD5C4000F05CBE /* Assets.xcassets */; };
 		951A34A01FDD5C4000F05CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951A349E1FDD5C4000F05CBE /* LaunchScreen.storyboard */; };
 		951A34A91FDD5E2A00F05CBE /* GithublistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34A81FDD5E2A00F05CBE /* GithublistViewController.swift */; };
+		951A34AE1FDD62B700F05CBE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */; };
+		951A34B21FDD648000F05CBE /* ApiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A34B11FDD648000F05CBE /* ApiList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		951A349F1FDD5C4000F05CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		951A34A11FDD5C4000F05CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951A34A81FDD5E2A00F05CBE /* GithublistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithublistViewController.swift; sourceTree = "<group>"; };
+		951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		951A34B11FDD648000F05CBE /* ApiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiList.swift; sourceTree = "<group>"; };
 		9B75D4E2C18E6459F6ACEB90 /* Pods-GithubList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubList/Pods-GithubList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,14 +74,32 @@
 		951A34941FDD5C4000F05CBE /* GithubList */ = {
 			isa = PBXGroup;
 			children = (
-				951A34951FDD5C4000F05CBE /* AppDelegate.swift */,
+				951A34B01FDD646800F05CBE /* ApiModel */,
+				951A34AC1FDD62A700F05CBE /* GithubListView */,
 				951A34A81FDD5E2A00F05CBE /* GithublistViewController.swift */,
+				951A34951FDD5C4000F05CBE /* AppDelegate.swift */,
 				951A34991FDD5C4000F05CBE /* Main.storyboard */,
 				951A349C1FDD5C4000F05CBE /* Assets.xcassets */,
 				951A349E1FDD5C4000F05CBE /* LaunchScreen.storyboard */,
 				951A34A11FDD5C4000F05CBE /* Info.plist */,
 			);
 			path = GithubList;
+			sourceTree = "<group>";
+		};
+		951A34AC1FDD62A700F05CBE /* GithubListView */ = {
+			isa = PBXGroup;
+			children = (
+				951A34AD1FDD62B700F05CBE /* ListTableViewCell.swift */,
+			);
+			path = GithubListView;
+			sourceTree = "<group>";
+		};
+		951A34B01FDD646800F05CBE /* ApiModel */ = {
+			isa = PBXGroup;
+			children = (
+				951A34B11FDD648000F05CBE /* ApiList.swift */,
+			);
+			path = ApiModel;
 			sourceTree = "<group>";
 		};
 		C98559B5ECAC219DF7EAC154 /* Frameworks */ = {
@@ -229,6 +251,8 @@
 			files = (
 				951A34A91FDD5E2A00F05CBE /* GithublistViewController.swift in Sources */,
 				951A34961FDD5C4000F05CBE /* AppDelegate.swift in Sources */,
+				951A34B21FDD648000F05CBE /* ApiList.swift in Sources */,
+				951A34AE1FDD62B700F05CBE /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
