@@ -15,11 +15,19 @@ final class ApiList : NSObject {
     
     open var response: [Response] = [Response]() //파싱데이터 배열로 저장
     
-    struct Response {
+    struct Response: Hashable {
         let listId: String //저장소 고유아이디
         let name: String    //유저 이름
         let ownerId: String //유저 고유번호
         let imageURL: URL?  //유저이미지
+        
+        var hashValue: Int {
+            return ownerId.hashValue
+        }
+        
+        static func ==(lhs: Response, rhs: Response) -> Bool {
+            return lhs.ownerId == rhs.ownerId
+        }
         
         init(_ json: JSON) {
             self.listId = json["id"].stringValue
@@ -33,9 +41,11 @@ final class ApiList : NSObject {
             if let successJson = response.result.value {
                 for item in JSON(successJson).arrayValue{
                     self.response.append(Response(item))
+                    self.response = Array(Set( self.response))
                 }
                 success()
             }
         }
     }
 }
+
